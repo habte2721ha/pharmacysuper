@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+# Route API calls to api.php
+RewriteRule ^api/data/(.*)$ api.php?action=data&key=$1 [QSA,L]
+RewriteRule ^api/health$ api.php?action=health [QSA,L]
+RewriteRule ^api/system/next-receipt-number$ api.php?action=receipt [QSA,L]
+RewriteRule ^api/system/reset$ api.php?action=reset [QSA,L]
+
+# Route React SPA
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.html [QSA,L]

@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "System user (admin, cashier, pharmacist)",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "role": { "type": "string" },
+        "name": { "type": "string" },
+        "isDeleted": { "type": "boolean" }
+      },
+      "required": ["username", "role", "name"]
+    },
+    "PharmacyInfo": {
+      "title": "PharmacyInfo",
+      "description": "Global settings for the pharmacy",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "tin": { "type": "string" },
+        "phone": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Inventory product",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "quantity": { "type": "number" },
+        "minStockLevel": { "type": "number" },
+        "buyingPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "supplier": { "type": "string" },
+        "expiryDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "quantity", "createdAt"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Completed transaction",
+      "type": "object",
+      "properties": {
+        "receiptNumber": { "type": "string" },
+        "subTotal": { "type": "number" },
+        "grandTotal": { "type": "number" },
+        "soldBy": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["receiptNumber", "grandTotal", "soldBy", "date"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "System users"
+    },
+    "/info/settings": {
+      "schema": { "$ref": "#/entities/PharmacyInfo" },
+      "description": "Pharmacy settings"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Products in inventory"
+    },
+    "/sales/{saleId}": {
+      "schema": { "$ref": "#/entities/Sale" },
+      "description": "Records of all sales"
+    }
+  }
+}

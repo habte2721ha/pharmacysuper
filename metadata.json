@@ -1,0 +1,11 @@
+{
+  "name": "Advanced Pharmacy Stock Management System",
+  "description": "A modern, professional pharmacy inventory and POS system packaged as a desktop application with hardware support.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
